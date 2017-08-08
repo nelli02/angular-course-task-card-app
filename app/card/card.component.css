@@ -1,0 +1,30 @@
+.card{
+    border-radius: 0;
+}
+
+.card,
+.card-footer{
+    background-color: #FFFFA5;
+    border: none;
+}
+
+.card-footer{
+    text-align: right;
+}
+
+.card.completed,
+.card.completed .card-footer{
+    background-color: #EEE;
+    color: #CCC;
+
+}
+
+.card.erased{
+    visibility: false;
+}
+
+i{
+    color: #CC0000;
+    padding-right: .5rem;
+}
+

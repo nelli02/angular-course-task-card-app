@@ -1,0 +1,19 @@
+<div class="col-sm-3">
+    <div class="card" (click)="statusToggle()" [class.completed]="task.completed" [class.erased]="task.erased">
+        <span *ngIf="!task.erased">
+            <div class="card-block">
+                <p>{{ task.content }}</p>
+            </div>
+            <div class="card-footer">
+                <span *ngIf="!task.completed"><i class="fa fa-times" aria-hidden="true"></i>Not Complete</span>
+                <span *ngIf="task.completed"><i class="fa fa-check" aria-hidden="true"></i>Completed</span>
+            </div>
+            <!--Completed: {{ task.completed}} just checking 2way binding via interpolation-->
+            
+            <button (click)="eraseTask()">
+                <i class="fa fa-eraser" aria-hidden="true"></i>
+                Erase Task
+            </button>
+        </span>
+    </div>
+</div>

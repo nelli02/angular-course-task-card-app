@@ -9,13 +9,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var task_1 = require('./model/task');
 var AppComponent = (function () {
     function AppComponent() {
+        this.tasks = [
+            new task_1.Task("Buy a monkey", false, false),
+            new task_1.Task("Walk the Turtle", false, false),
+            new task_1.Task("Walk me", true, false),
+            new task_1.Task("Understand angular", false, false),
+            new task_1.Task("Create the employee portal", false, false)
+        ];
+        // this is a temporary storage but enough to demonstrate 2 way binding...
+        this.currentTask = new task_1.Task(null, false, false);
     }
+    AppComponent.prototype.addTask = function () {
+        //let creates a local variable and assigns the specified value to it
+        //we need the local var to add to the array instead of currentTask since when currentTask
+        //value is changed in the front-end, due to the fact that is strongly linked both to the form data 
+        //and the model data, it will change all references to the last typed task
+        //so you will add the correct number of tasks but they will all be assigned to 
+        //the last task name
+        var task = new task_1.Task(this.currentTask.content, this.currentTask.completed, false);
+        //adds the currentTask to the tasks array
+        this.tasks.push(task);
+        this.currentTask = new task_1.Task(null, false, false);
+    };
     AppComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'my-app',
-            template: '<h1>Skeleton Project</h1>'
+            templateUrl: 'app.component.html',
+            styleUrls: ['app.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
